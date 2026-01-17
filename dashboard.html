@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - 10 Min School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600">10ms</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#courses" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200">Courses</a>
+                    <a href="index.html#features" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200">Features</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Notifications -->
+                    <button id="notificationBtn" class="relative p-2 text-slate-700 hover:text-indigo-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                        <span class="absolute top-0 right-0 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                    <!-- User Menu -->
+                    <div class="relative" id="userMenuContainer">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 p-2 hover:bg-slate-100 rounded-lg transition-colors duration-200">
+                            <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-semibold">RS</span>
+                            </div>
+                            <span class="hidden md:block text-slate-700 font-medium">রাফি আহমেদ</span>
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50">
+                            <a href="dashboard.html" class="block px-4 py-2 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">Dashboard</a>
+                            <a href="profile.html" class="block px-4 py-2 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">Profile</a>
+                            <a href="settings.html" class="block px-4 py-2 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">Settings</a>
+                            <hr class="my-2 border-slate-200">
+                            <a href="index.html" class="block px-4 py-2 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">স্বাগতম, রাফি আহমেদ!</h1>
+            <p class="text-slate-600">আপনার শেখার যাত্রা চালিয়ে যান</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <!-- Stat 1 -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">এনরোল করা কোর্স</p>
+                        <p class="text-2xl font-bold text-slate-900">12</p>
+                    </div>
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">সম্পন্ন কোর্স</p>
+                        <p class="text-2xl font-bold text-slate-900">5</p>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">মোট কুইজ</p>
+                        <p class="text-2xl font-bold text-slate-900">48</p>
+                    </div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">স্ট্রিক</p>
+                        <p class="text-2xl font-bold text-slate-900">15 দিন</p>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column (2/3) -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- My Courses Section -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-slate-900">আমার কোর্সসমূহ</h2>
+                        <a href="my-courses.html" class="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
+                            সব দেখুন →
+                        </a>
+                    </div>
+
+                    <!-- Course Cards -->
+                    <div class="space-y-4">
+                        <!-- Course 1 -->
+                        <div class="border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                            <div class="flex items-start space-x-4">
+                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=200&h=200&fit=crop" alt="HSC ২০২৬" class="w-24 h-24 rounded-lg flex-shrink-0 object-cover">
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-1">HSC ২০২৬ - সম্পূর্ণ প্রস্তুতি</h3>
+                                    <p class="text-sm text-slate-600 mb-3">পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান</p>
+                                    
+                                    <!-- Progress Bar -->
+                                    <div class="mb-2">
+                                        <div class="flex items-center justify-between text-xs text-slate-600 mb-1">
+                                            <span>প্রগ্রেস</span>
+                                            <span>৬৫%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 rounded-full h-2">
+                                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-4 text-sm text-slate-600">
+                                            <span>১৫০/২৩০ ক্লাস</span>
+                                            <span>•</span>
+                                            <span>১২ কুইজ সম্পন্ন</span>
+                                        </div>
+                                        <a href="course-player.html" class="text-indigo-600 hover:text-indigo-700 font-medium text-sm">
+                                            চালিয়ে যান →
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                            <div class="flex items-start space-x-4">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&h=200&fit=crop" alt="SSC ২০২৬" class="w-24 h-24 rounded-lg flex-shrink-0 object-cover">
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-1">SSC ২০২৬ - সম্পূর্ণ প্রস্তুতি</h3>
+                                    <p class="text-sm text-slate-600 mb-3">গণিত, ইংরেজি, বিজ্ঞান</p>
+                                    
+                                    <!-- Progress Bar -->
+                                    <div class="mb-2">
+                                        <div class="flex items-center justify-between text-xs text-slate-600 mb-1">
+                                            <span>প্রগ্রেস</span>
+                                            <span>৪০%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 rounded-full h-2">
+                                            <div class="bg-green-600 h-2 rounded-full" style="width: 40%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-4 text-sm text-slate-600">
+                                            <span>৮০/২০০ ক্লাস</span>
+                                            <span>•</span>
+                                            <span>৮ কুইজ সম্পন্ন</span>
+                                        </div>
+                                        <a href="course-player.html" class="text-indigo-600 hover:text-indigo-700 font-medium text-sm">
+                                            চালিয়ে যান →
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                            <div class="flex items-start space-x-4">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&h=200&fit=crop" alt="Web Development" class="w-24 h-24 rounded-lg flex-shrink-0 object-cover">
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-semibold text-slate-900 mb-1">Web Development - Full Stack</h3>
+                                    <p class="text-sm text-slate-600 mb-3">HTML, CSS, JavaScript, React, Node.js</p>
+                                    
+                                    <!-- Progress Bar -->
+                                    <div class="mb-2">
+                                        <div class="flex items-center justify-between text-xs text-slate-600 mb-1">
+                                            <span>প্রগ্রেস</span>
+                                            <span>৮৫%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 rounded-full h-2">
+                                            <div class="bg-amber-600 h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-4 text-sm text-slate-600">
+                                            <span>১৭০/২০০ ক্লাস</span>
+                                            <span>•</span>
+                                            <span>২০ কুইজ সম্পন্ন</span>
+                                        </div>
+                                        <a href="course-player.html" class="text-indigo-600 hover:text-indigo-700 font-medium text-sm">
+                                            চালিয়ে যান →
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <h2 class="text-xl font-bold text-slate-900 mb-6">সাম্প্রতিক কার্যক্রম</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-slate-900">পদার্থবিজ্ঞান - গতিবিদ্যা ক্লাস সম্পন্ন</p>
+                                <p class="text-xs text-slate-500">২ ঘণ্টা আগে</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-slate-900">রসায়ন কুইজ সম্পন্ন - ৮৫% স্কোর</p>
+                                <p class="text-xs text-slate-500">৫ ঘণ্টা আগে</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-slate-900">ক্লাস নোটস ডাউনলোড করা হয়েছে</p>
+                                <p class="text-xs text-slate-500">১ দিন আগে</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (1/3) -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <h2 class="text-lg font-bold text-slate-900 mb-4">দ্রুত কাজ</h2>
+                    <div class="space-y-3">
+                        <a href="index.html#courses" class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            <span class="font-medium">নতুন কোর্স খুঁজুন</span>
+                        </a>
+                        <a href="quiz.html" class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                            </svg>
+                            <span class="font-medium">প্র্যাকটিস কুইজ</span>
+                        </a>
+                        <a href="bookmarks.html" class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            </svg>
+                            <span class="font-medium">বুকমার্ক</span>
+                        </a>
+                        <a href="certificates.html" class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                            <span class="font-medium">সার্টিফিকেট</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Upcoming Live Classes -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <h2 class="text-lg font-bold text-slate-900 mb-4">আসন্ন লাইভ ক্লাস</h2>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-indigo-600 pl-4">
+                            <p class="text-sm font-semibold text-slate-900">পদার্থবিজ্ঞান - তাপগতিবিদ্যা</p>
+                            <p class="text-xs text-slate-600 mt-1">আজ, সন্ধ্যা ৭:০০ PM</p>
+                            <button class="mt-2 text-xs text-indigo-600 hover:text-indigo-700 font-medium">
+                                রিমাইন্ডার সেট করুন
+                            </button>
+                        </div>
+                        <div class="border-l-4 border-green-600 pl-4">
+                            <p class="text-sm font-semibold text-slate-900">রসায়ন - জৈব রসায়ন</p>
+                            <p class="text-xs text-slate-600 mt-1">কাল, বিকাল ৪:০০ PM</p>
+                            <button class="mt-2 text-xs text-green-600 hover:text-green-700 font-medium">
+                                রিমাইন্ডার সেট করুন
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+                    <h2 class="text-lg font-bold text-slate-900 mb-4">অর্জনসমূহ</h2>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 bg-amber-50 rounded-lg">
+                            <div class="text-2xl mb-1">🏆</div>
+                            <p class="text-xs font-medium text-slate-700">Top 10%</p>
+                        </div>
+                        <div class="text-center p-3 bg-green-50 rounded-lg">
+                            <div class="text-2xl mb-1">🔥</div>
+                            <p class="text-xs font-medium text-slate-700">15 Day Streak</p>
+                        </div>
+                        <div class="text-center p-3 bg-indigo-50 rounded-lg">
+                            <div class="text-2xl mb-1">⭐</div>
+                            <p class="text-xs font-medium text-slate-700">5 Courses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses - 10 Min School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600">10ms</a>
+                    <div class="hidden md:block text-sm text-slate-600">
+                        <span class="text-indigo-600">All Courses</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200">Dashboard</a>
+                    <!-- Cart Icon -->
+                    <a href="cart.html" class="relative p-2 text-slate-700 hover:text-indigo-600 transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-semibold hidden">0</span>
+                    </a>
+                    <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm font-semibold">RS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header Section -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">সব কোর্স</h1>
+            <p class="text-slate-600">আপনার পছন্দের কোর্স খুঁজে নিন</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="bg-white rounded-xl shadow-sm p-4 mb-6">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1 relative">
+                    <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                        placeholder="কোর্স, বিষয়, বা ইনস্ট্রাক্টর দিয়ে খুঁজুন..."
+                    />
+                </div>
+                <button id="filterToggle" class="md:hidden px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                    <span class="flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                        </svg>
+                        <span>Filter</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Left Sidebar - Filters -->
+            <div id="filterSidebar" class="lg:w-64 flex-shrink-0">
+                <div class="bg-white rounded-xl shadow-sm p-6 sticky top-20">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-lg font-bold text-slate-900">ফিল্টার</h2>
+                        <button id="clearFilters" class="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
+                            Clear All
+                        </button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-slate-900 mb-3">ক্যাটাগরি</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="category" value="academic" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">একাডেমিক</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="category" value="skills" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">স্কিলস</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="category" value="admission" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">ভর্তি পরীক্ষা</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="category" value="language" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">ভাষা</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-slate-900 mb-3">মূল্য</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="filter-radio" data-filter="price" value="free" class="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">ফ্রি</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="filter-radio" data-filter="price" value="0-1000" class="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৳০ - ৳১,০০০</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="filter-radio" data-filter="price" value="1000-3000" class="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৳১,০০০ - ৳৩,০০০</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="filter-radio" data-filter="price" value="3000+" class="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৳৩,০০০+</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-slate-900 mb-3">রেটিং</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="rating" value="4.5+" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৪.৫+ ⭐</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="rating" value="4.0+" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৪.০+ ⭐</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="rating" value="3.5+" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৩.৫+ ⭐</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Duration Filter -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-slate-900 mb-3">সময়কাল</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="duration" value="0-3" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">০-৩ মাস</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="duration" value="3-6" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৩-৬ মাস</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="duration" value="6-12" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">৬-১২ মাস</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="duration" value="12+" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">১২+ মাস</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Level Filter -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-slate-900 mb-3">লেভেল</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="level" value="beginner" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">শুরু</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="level" value="intermediate" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">মধ্যম</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="filter-checkbox" data-filter="level" value="advanced" class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-slate-700">উন্নত</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Course List -->
+            <div class="flex-1">
+                <!-- Sort & View Options -->
+                <div class="bg-white rounded-xl shadow-sm p-4 mb-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="text-sm text-slate-600">
+                            <span id="resultCount">২৪</span> টি কোর্স পাওয়া গেছে
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <label class="text-sm text-slate-700">সাজান:</label>
+                            <select id="sortSelect" class="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                                <option value="popular">সবচেয়ে জনপ্রিয়</option>
+                                <option value="newest">নতুন</option>
+                                <option value="price-low">মূল্য: কম থেকে বেশি</option>
+                                <option value="price-high">মূল্য: বেশি থেকে কম</option>
+                                <option value="rating">সর্বোচ্চ রেটিং</option>
+                                <option value="duration">সময়কাল</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Grid -->
+                <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Course cards will be generated by JavaScript -->
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="hidden text-center py-12">
+                    <svg class="w-16 h-16 text-slate-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2">কোনো কোর্স পাওয়া যায়নি</h3>
+                    <p class="text-slate-600 mb-4">আপনার ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন</p>
+                    <button id="resetFiltersBtn" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                        সব ফিল্টার সরান
+                    </button>
+                </div>
+
+                <!-- Pagination -->
+                <div id="pagination" class="mt-8 flex justify-center">
+                    <!-- Pagination will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-42AOixXwHYdNhm8Q/p9Sm6+UeOqB+tqd+s+d/U5we03TpPAI0P8HtTgXQCMWhHI0rQreIEZ88V7ZnqNG6lyGgQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="courses.js"></script>
+</body>
+</html>
+

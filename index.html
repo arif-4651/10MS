@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Min School - Learn with Joy!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center space-x-2">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=40&h=40&fit=crop" alt="10 Min School" class="w-10 h-10 rounded-lg">
+                    <div class="text-2xl font-bold text-indigo-600">10ms</div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="courses.html" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.allCourses">All Courses</a>
+                    <a href="#courses" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.classes">Classes 6-12</a>
+                    <a href="#features" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.skills">Skills</a>
+                    <a href="#courses" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.admission">Admission Test</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="hidden md:block px-4 py-2 text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.login">
+                        Login
+                    </a>
+                    <a href="register.html" class="hidden md:block px-4 py-2 text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200" data-i18n="nav.signUp">
+                        Sign Up
+                    </a>
+                    <button id="langToggleBtn" class="hidden md:block px-4 py-2 text-indigo-600 border border-indigo-600 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-200">
+                        EN
+                    </button>
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#courses" class="block text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.classes">Classes 6-12</a>
+                <a href="#features" class="block text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.skills">Skills</a>
+                <a href="#courses" class="block text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.admission">Admission Test</a>
+                <a href="#" class="block text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.more">More</a>
+                <div class="pt-3 border-t border-slate-200 space-y-3">
+                    <a href="login.html" class="block text-slate-700 hover:text-indigo-600 transition-colors duration-200" data-i18n="nav.login">Login</a>
+                    <a href="register.html" class="block text-indigo-600 font-medium hover:text-indigo-700 transition-colors duration-200" data-i18n="nav.signUp">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero Section -->
+    <section class="hero relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 text-white py-20 md:py-32 overflow-hidden" data-aos="fade-up">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-i18n="hero.title">
+                    শেখা হোক আনন্দে!
+                </h1>
+                <p class="text-xl md:text-2xl text-indigo-100 mb-8 max-w-3xl mx-auto" data-i18n="hero.subtitle">
+                    এক জায়গায় স্কুল ও কলেজের সম্পূর্ণ প্রস্তুতি!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button id="heroCtaBtn" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-50 hover:shadow-lg transition-all duration-200 transform hover:scale-105" data-i18n="hero.bookClass">
+                        ফ্রি ক্লাস বুক করুন
+                    </button>
+                    <button class="bg-indigo-500 bg-opacity-20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-opacity-30 transition-all duration-200" data-i18n="hero.downloadApp">
+                        ডাউনলোড করুন অ্যাপ
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Course Cards Grid -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="course-card bg-white bg-opacity-10 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-opacity-20 transition-all duration-200 cursor-pointer border border-white border-opacity-20" data-course="hsc26" data-aos="fade-up" data-aos-delay="0">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" alt="HSC ২০২৬" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="text-sm text-indigo-200 mb-2" data-i18n="course.hsc26.short">HSC ২৬</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white" data-i18n="course.hsc26.title">HSC ২০২৬</h3>
+                        <div class="flex items-center text-sm text-indigo-200">
+                            <span class="bg-indigo-500 bg-opacity-30 px-2 py-1 rounded" data-i18n="course.enrollment">২০২৬ সালে ভর্তি চলছে</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white bg-opacity-10 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-opacity-20 transition-all duration-200 cursor-pointer border border-white border-opacity-20" data-course="hsc27" data-aos="fade-up" data-aos-delay="50">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" alt="HSC ২০২৭" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="text-sm text-indigo-200 mb-2" data-i18n="course.hsc27.short">HSC ২৭</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white" data-i18n="course.hsc27.title">HSC ২০২৭</h3>
+                        <div class="flex items-center text-sm text-indigo-200">
+                            <span class="bg-indigo-500 bg-opacity-30 px-2 py-1 rounded" data-i18n="course.enrollment">২০২৬ সালে ভর্তি চলছে</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white bg-opacity-10 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-opacity-20 transition-all duration-200 cursor-pointer border border-white border-opacity-20" data-course="ssc26" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" alt="SSC ২০২৬" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="text-sm text-indigo-200 mb-2" data-i18n="course.ssc26.short">SSC ২৬</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white" data-i18n="course.ssc26.title">SSC ২০২৬</h3>
+                        <div class="flex items-center text-sm text-indigo-200">
+                            <span class="bg-indigo-500 bg-opacity-30 px-2 py-1 rounded" data-i18n="course.enrollment">২০২৬ সালে ভর্তি চলছে</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white bg-opacity-10 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-opacity-20 transition-all duration-200 cursor-pointer border border-white border-opacity-20" data-course="class10" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" alt="দশম শ্রেণি" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="text-sm text-indigo-200 mb-2" data-i18n="course.class10.short">দশম শ্রেণি</div>
+                        <h3 class="text-xl font-semibold mb-2 text-white" data-i18n="course.class10.title">দশম শ্রেণি</h3>
+                        <div class="flex items-center text-sm text-indigo-200">
+                            <span class="bg-indigo-500 bg-opacity-30 px-2 py-1 rounded" data-i18n="course.enrollment">২০২৬ সালে ভর্তি চলছে</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Features Section -->
+    <section id="features" class="py-20 bg-white" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4" data-i18n="features.title">
+                    কেন 10 Min School?
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto" data-i18n="features.subtitle">
+                    শেখার সেরা সুযোগ অনলাইন ও অফলাইন দু'জায়গাতেই
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3" data-i18n="features.academic.title">একাডেমিক পড়াশোনা</h3>
+                    <p class="text-slate-600 leading-relaxed" data-i18n="features.academic.desc">
+                        ইন্টারেক্টিভ লাইভ ক্লাস, আনলিমিটেড কুইজ, MCQ Question Bank, রেকর্ডেড ক্লাস এবং আরও অনেক কিছু
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100" data-aos="fade-up" data-aos-delay="50">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3" data-i18n="features.doubt.title">24x7 ডাউটসলভ</h3>
+                    <p class="text-slate-600 leading-relaxed" data-i18n="features.doubt.desc">
+                        ৭ দিন ২৪ ঘণ্টা তোমার ডাউট সলভ করতে SuperSolve
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3" data-i18n="features.offline.title">পড়া চলবে ইন্টারনেট ছাড়াও</h3>
+                    <p class="text-slate-600 leading-relaxed" data-i18n="features.offline.desc">
+                        ইন্টারনেট কানেকশন ছাড়াও ডাউনলোড করে দেখতে পারবে রেকর্ডেট ক্লাস ও ক্লাস নোটস
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Course Categories -->
+    <section id="courses" class="py-20 bg-slate-50" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4" data-i18n="courses.title">
+                    আমাদের কোর্সসমূহ
+                </h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto" data-i18n="courses.subtitle">
+                    বিভিন্ন শ্রেণি ও বিষয়ের জন্য প্রস্তুত কোর্স
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Course Category 1 -->
+                <div class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer border border-slate-100 group" data-category="class6-12" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-600 transition-colors duration-200">
+                            <svg class="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full" data-i18n="courses.class6-12.badge">Popular</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-i18n="courses.class6-12.title">ক্লাস ৬-১২</h3>
+                    <p class="text-slate-600 text-sm mb-4" data-i18n="courses.class6-12.desc">স্কুলের সকল শ্রেণির জন্য সম্পূর্ণ প্রস্তুতি</p>
+                    <div class="flex items-center text-sm text-indigo-600 font-medium">
+                        <span data-i18n="courses.viewDetails">বিস্তারিত দেখুন</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Course Category 2 -->
+                <div class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer border border-slate-100 group" data-category="skills" data-aos="fade-up" data-aos-delay="50">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-600 transition-colors duration-200">
+                            <svg class="w-6 h-6 text-green-600 group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full" data-i18n="courses.skills.badge">New</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-i18n="courses.skills.title">স্কিলস</h3>
+                    <p class="text-slate-600 text-sm mb-4" data-i18n="courses.skills.desc">ক্যারিয়ারের জন্য প্রয়োজনীয় দক্ষতা উন্নয়ন</p>
+                    <div class="flex items-center text-sm text-green-600 font-medium">
+                        <span data-i18n="courses.viewDetails">বিস্তারিত দেখুন</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Course Category 3 -->
+                <div class="category-card bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer border border-slate-100 group" data-category="admission" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center group-hover:bg-amber-600 transition-colors duration-200">
+                            <svg class="w-6 h-6 text-amber-600 group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-amber-600 bg-amber-50 px-3 py-1 rounded-full" data-i18n="courses.admission.badge">Hot</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2" data-i18n="courses.admission.title">ভর্তি পরীক্ষা</h3>
+                    <p class="text-slate-600 text-sm mb-4" data-i18n="courses.admission.desc">বিভিন্ন বিশ্ববিদ্যালয় ও কলেজের ভর্তি পরীক্ষার প্রস্তুতি</p>
+                    <div class="flex items-center text-sm text-amber-600 font-medium">
+                        <span data-i18n="courses.viewDetails">বিস্তারিত দেখুন</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold text-indigo-400 mb-4">10ms</div>
+                <p class="text-slate-400 mb-6" data-i18n="footer.copyright">© ২০১৫ - ২০২৬ টেন মিনিট স্কুল কর্তৃক সর্বস্বত্ব সংরক্ষিত</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors duration-200" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors duration-200" data-i18n="footer.terms">Terms of Service</a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-400 transition-colors duration-200" data-i18n="footer.contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-42AOixXwHYdNhm8Q/p9Sm6+UeOqB+tqd+s+d/U5we03TpPAI0P8HtTgXQCMWhHI0rQreIEZ88V7ZnqNG6lyGgQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
+</body>
+</html>

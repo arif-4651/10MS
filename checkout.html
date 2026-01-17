@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - 10 Min School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600">10ms</a>
+                    <div class="hidden md:block text-sm text-slate-600">
+                        <span class="text-indigo-600">Checkout</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200">Back to Cart</a>
+                    <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm font-semibold">RS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex items-center justify-center space-x-4">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-semibold">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-slate-900">Cart</span>
+                </div>
+                <div class="w-16 h-0.5 bg-green-600"></div>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-semibold">
+                        2
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-slate-900">Checkout</span>
+                </div>
+                <div class="w-16 h-0.5 bg-slate-300"></div>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-slate-300 text-slate-600 rounded-full flex items-center justify-center font-semibold">
+                        3
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-slate-500">Confirmation</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Forms (2/3) -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Billing Information -->
+                <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">বিলিং তথ্য</h2>
+                    
+                    <form id="billingForm" class="space-y-5">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-slate-700 mb-2">
+                                পূর্ণ নাম <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="fullName" 
+                                name="fullName"
+                                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                placeholder="আপনার পূর্ণ নাম"
+                                required
+                            />
+                            <p class="mt-1 text-xs text-red-500 hidden" id="nameError">নাম দিন</p>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
+                                ইমেইল <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email"
+                                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                placeholder="example@email.com"
+                                required
+                            />
+                            <p class="mt-1 text-xs text-red-500 hidden" id="emailError">বৈধ ইমেইল দিন</p>
+                        </div>
+
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-slate-700 mb-2">
+                                ফোন নম্বর <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone"
+                                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                placeholder="০১৭১২৩৪৫৬৭৮"
+                                required
+                            />
+                            <p class="mt-1 text-xs text-red-500 hidden" id="phoneError">বৈধ ফোন নম্বর দিন</p>
+                        </div>
+
+                        <!-- Address -->
+                        <div>
+                            <label for="address" class="block text-sm font-medium text-slate-700 mb-2">
+                                ঠিকানা <span class="text-red-500">*</span>
+                            </label>
+                            <textarea 
+                                id="address" 
+                                name="address"
+                                rows="3"
+                                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none"
+                                placeholder="আপনার সম্পূর্ণ ঠিকানা"
+                                required
+                            ></textarea>
+                            <p class="mt-1 text-xs text-red-500 hidden" id="addressError">ঠিকানা দিন</p>
+                        </div>
+
+                        <!-- City & Postal Code -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="city" class="block text-sm font-medium text-slate-700 mb-2">
+                                    শহর <span class="text-red-500">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="city" 
+                                    name="city"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    placeholder="ঢাকা"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label for="postalCode" class="block text-sm font-medium text-slate-700 mb-2">
+                                    পোস্টাল কোড
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="postalCode" 
+                                    name="postalCode"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    placeholder="১২৩০"
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">পেমেন্ট পদ্ধতি</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- bKash -->
+                        <label class="payment-method flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-indigo-500 transition-colors duration-200">
+                            <input 
+                                type="radio" 
+                                name="paymentMethod" 
+                                value="bkash"
+                                class="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                                checked
+                            />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-green-700 font-bold text-lg">bKash</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-900">bKash</div>
+                                            <div class="text-sm text-slate-600">মোবাইল নম্বর দিয়ে পেমেন্ট করুন</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Nagad -->
+                        <label class="payment-method flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-indigo-500 transition-colors duration-200">
+                            <input 
+                                type="radio" 
+                                name="paymentMethod" 
+                                value="nagad"
+                                class="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                            />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-red-700 font-bold text-lg">Nagad</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-900">Nagad</div>
+                                            <div class="text-sm text-slate-600">মোবাইল নম্বর দিয়ে পেমেন্ট করুন</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Rocket -->
+                        <label class="payment-method flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-indigo-500 transition-colors duration-200">
+                            <input 
+                                type="radio" 
+                                name="paymentMethod" 
+                                value="rocket"
+                                class="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                            />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-blue-700 font-bold text-lg">Rocket</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-900">Rocket</div>
+                                            <div class="text-sm text-slate-600">মোবাইল নম্বর দিয়ে পেমেন্ট করুন</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Card Payment -->
+                        <label class="payment-method flex items-center p-4 border-2 border-slate-200 rounded-lg cursor-pointer hover:border-indigo-500 transition-colors duration-200">
+                            <input 
+                                type="radio" 
+                                name="paymentMethod" 
+                                value="card"
+                                class="w-5 h-5 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                            />
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-900">ডেবিট/ক্রেডিট কার্ড</div>
+                                            <div class="text-sm text-slate-600">Visa, Mastercard, Amex</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Payment Details (shown when mobile payment selected) -->
+                    <div id="mobilePaymentDetails" class="mt-6 p-4 bg-slate-50 rounded-lg">
+                        <label for="mobileNumber" class="block text-sm font-medium text-slate-700 mb-2">
+                            মোবাইল নম্বর <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="mobileNumber" 
+                            name="mobileNumber"
+                            class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                            placeholder="০১৭১২৩৪৫৬৭৮"
+                        />
+                        <p class="mt-2 text-sm text-slate-600">
+                            আপনার <span id="paymentProvider">bKash</span> অ্যাকাউন্ট থেকে পেমেন্ট করা হবে
+                        </p>
+                    </div>
+
+                    <!-- Card Details (shown when card selected) -->
+                    <div id="cardPaymentDetails" class="mt-6 p-4 bg-slate-50 rounded-lg hidden">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="cardNumber" class="block text-sm font-medium text-slate-700 mb-2">
+                                    কার্ড নম্বর <span class="text-red-500">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="cardNumber" 
+                                    name="cardNumber"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    placeholder="1234 5678 9012 3456"
+                                    maxlength="19"
+                                />
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="expiryDate" class="block text-sm font-medium text-slate-700 mb-2">
+                                        মেয়াদ শেষ <span class="text-red-500">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="expiryDate" 
+                                        name="expiryDate"
+                                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                        placeholder="MM/YY"
+                                        maxlength="5"
+                                    />
+                                </div>
+                                <div>
+                                    <label for="cvv" class="block text-sm font-medium text-slate-700 mb-2">
+                                        CVV <span class="text-red-500">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="cvv" 
+                                        name="cvv"
+                                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                        placeholder="123"
+                                        maxlength="3"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="cardName" class="block text-sm font-medium text-slate-700 mb-2">
+                                    কার্ডধারীর নাম <span class="text-red-500">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="cardName" 
+                                    name="cardName"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                                    placeholder="JOHN DOE"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Order Summary (1/3) -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-sm p-6 sticky top-20">
+                    <h2 class="text-lg font-bold text-slate-900 mb-6">অর্ডার সারাংশ</h2>
+
+                    <!-- Order Items -->
+                    <div id="orderItems" class="space-y-3 mb-6 pb-6 border-b border-slate-200">
+                        <!-- Items will be generated by JavaScript -->
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-600">সাবটোটাল</span>
+                            <span class="font-semibold text-slate-900" id="orderSubtotal">৳০</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-600">ছাড়</span>
+                            <span class="font-semibold text-green-600" id="orderDiscount">-৳০</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-600">কুপন</span>
+                            <span class="font-semibold text-green-600" id="orderCouponDiscount">-৳০</span>
+                        </div>
+                        <div class="pt-3 border-t border-slate-200">
+                            <div class="flex items-center justify-between">
+                                <span class="text-lg font-semibold text-slate-900">মোট</span>
+                                <span class="text-2xl font-bold text-indigo-600" id="orderTotal">৳০</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Conditions -->
+                    <div class="mb-6">
+                        <label class="flex items-start">
+                            <input 
+                                type="checkbox" 
+                                id="termsCheckbox"
+                                class="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500 mt-1"
+                                required
+                            />
+                            <span class="ml-2 text-sm text-slate-700">
+                                আমি 
+                                <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">শর্তাবলী</a> 
+                                এবং 
+                                <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">রিফান্ড নীতি</a> 
+                                পড়েছি এবং সম্মত
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Place Order Button -->
+                    <button 
+                        id="placeOrderBtn"
+                        class="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-200 font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        অর্ডার করুন
+                    </button>
+
+                    <!-- Security Info -->
+                    <div class="mt-6 pt-6 border-t border-slate-200">
+                        <div class="flex items-center space-x-2 text-sm text-slate-600 mb-2">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <span>সুরক্ষিত পেমেন্ট</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-slate-600">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>৩০ দিন রিফান্ড গ্যারান্টি</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - 10 Min School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #6366f1;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-2xl font-bold text-indigo-600">10ms</a>
+                    <div class="hidden md:block text-sm text-slate-600">
+                        <span class="text-indigo-600">Settings</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-slate-700 hover:text-indigo-600 transition-colors duration-200">Dashboard</a>
+                    <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm font-semibold">RS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">সেটিংস</h1>
+            <p class="text-slate-600">আপনার অ্যাকাউন্ট সেটিংস পরিচালনা করুন</p>
+        </div>
+
+        <!-- Settings Sections -->
+        <div class="space-y-6">
+            <!-- Account Settings -->
+            <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-900 mb-6">অ্যাকাউন্ট সেটিংস</h2>
+                
+                <div class="space-y-6">
+                    <!-- Language -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">ভাষা</h3>
+                            <p class="text-sm text-slate-600">ইন্টারফেসের ভাষা নির্বাচন করুন</p>
+                        </div>
+                        <select id="languageSelect" class="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                            <option value="bn">বাংলা</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+
+                    <!-- Timezone -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">সময় অঞ্চল</h3>
+                            <p class="text-sm text-slate-600">আপনার সময় অঞ্চল নির্বাচন করুন</p>
+                        </div>
+                        <select id="timezoneSelect" class="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                            <option value="Asia/Dhaka">Asia/Dhaka (BST)</option>
+                            <option value="UTC">UTC</option>
+                        </select>
+                    </div>
+
+                    <!-- Delete Account -->
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+                        <div>
+                            <h3 class="text-sm font-semibold text-red-600 mb-1">অ্যাকাউন্ট মুছুন</h3>
+                            <p class="text-sm text-slate-600">আপনার অ্যাকাউন্ট স্থায়ীভাবে মুছে ফেলুন</p>
+                        </div>
+                        <button onclick="deleteAccount()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 text-sm font-semibold">
+                            মুছুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-900 mb-6">নোটিফিকেশন সেটিংস</h2>
+                
+                <div class="space-y-6">
+                    <!-- Email Notifications -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">ইমেইল নোটিফিকেশন</h3>
+                            <p class="text-sm text-slate-600">ইমেইলে নোটিফিকেশন পান</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="emailNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Push Notifications -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">পুশ নোটিফিকেশন</h3>
+                            <p class="text-sm text-slate-600">ব্রাউজারে নোটিফিকেশন পান</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="pushNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Course Updates -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">কোর্স আপডেট</h3>
+                            <p class="text-sm text-slate-600">নতুন ক্লাস এবং আপডেট সম্পর্কে জানুন</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="courseUpdates" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Quiz Results -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">কুইজ ফলাফল</h3>
+                            <p class="text-sm text-slate-600">কুইজ সম্পন্ন হলে নোটিফিকেশন পান</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="quizResults" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Marketing Emails -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">মার্কেটিং ইমেইল</h3>
+                            <p class="text-sm text-slate-600">নতুন কোর্স এবং অফার সম্পর্কে জানুন</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="marketingEmails">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-900 mb-6">গোপনীয়তা সেটিংস</h2>
+                
+                <div class="space-y-6">
+                    <!-- Profile Visibility -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">প্রোফাইল দৃশ্যমানতা</h3>
+                            <p class="text-sm text-slate-600">অন্যান্য ব্যবহারকারীদের আপনার প্রোফাইল দেখতে দিন</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="profileVisibility" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Show Progress -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">প্রগ্রেস দেখান</h3>
+                            <p class="text-sm text-slate-600">লিডারবোর্ডে আপনার প্রগ্রেস দেখান</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showProgress" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Data Collection -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-900 mb-1">ডেটা সংগ্রহ</h3>
+                            <p class="text-sm text-slate-600">ব্যবহারের ডেটা সংগ্রহ করতে অনুমতি দিন</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="dataCollection" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="flex justify-end">
+                <button onclick="saveSettings()" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-semibold">
+                    সেটিংস সংরক্ষণ করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
+
